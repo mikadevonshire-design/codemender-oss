@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Cloud | Gemini Enterprise Employee Database Portal</title>
+  <meta name="description" content="Gemini Enterprise Employee Database Portal with inline Model Armor AI Firewall and Content Policy file upload blocking for manufacturing-demo-486618." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header class="app-header" id="main-header">
+    <div class="header-left">
+      <div class="logo-badge">
+        <span class="logo-cloud">Google Cloud</span>
+        <span class="logo-divider">/</span>
+        <span class="logo-ge">Gemini Enterprise</span>
+      </div>
+      <h1 class="portal-title">Employee Database & AI Assistant</h1>
+    </div>
+    <div class="header-right">
+      <div class="project-pill" id="project-indicator">Project: <strong>manufacturing-demo-486618</strong></div>
+      <div class="security-status-badge" id="armor-badge">
+        <span class="status-dot pulsing"></span>
+        <span>Model Armor: <strong>HIGH CONFIDENCE</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tab-navigation" id="portal-nav" role="navigation" aria-label="Portal tabs">
+    <button class="tab-btn active" id="tab-btn-directory" data-target="view-directory">
+      <span class="tab-icon">👥</span> Employee Directory & AI Search
+    </button>
+    <button class="tab-btn" id="tab-btn-policy" data-target="view-policy">
+      <span class="tab-icon">🛡️</span> GE Content Policy & Upload Firewall
+    </button>
+    <button class="tab-btn" id="tab-btn-armor" data-target="view-armor">
+      <span class="tab-icon">⚙️</span> Model Armor Template Inspector
+    </button>
+  </nav>
+
+  <main class="main-container" id="main-content">
+    <!-- VIEW 1: Employee Directory & AI Natural Language Search -->
+    <section class="portal-view active" id="view-directory">
+      <div class="search-hero">
+        <div class="hero-text">
+          <h2>Natural Language Employee Query</h2>
+          <p>Query the <code>manufacturing-demo-486618</code> workforce securely. All queries are screened inline by Model Armor, and full PII is automatically masked.</p>
+        </div>
+        <div class="search-box-wrapper" id="directory-search-box">
+          <input type="text" id="employee-search-input" class="search-input" placeholder="Search by name, department, role, or security clearance (e.g. 'Robotics', 'Top Secret', 'Elena')..." autocomplete="off" />
+          <button id="search-clear-btn" class="clear-btn" title="Clear search">Clear</button>
+        </div>
+      </div>
+
+      <div class="directory-toolbar">
+        <div class="toolbar-stats" id="directory-stats">Showing active employee records</div>
+        <div class="filter-pills" id="department-filters">
+          <button class="filter-pill active" data-dept="all">All Departments</button>
+          <button class="filter-pill" data-dept="Robotics & PLC">Robotics & PLC</button>
+          <button class="filter-pill" data-dept="OT Security & Armor">OT Security & Armor</button>
+          <button class="filter-pill" data-dept="Operations">Operations</button>
+          <button class="filter-pill" data-dept="Materials R&D">Materials R&D</button>
+        </div>
+      </div>
+
+      <div class="employee-grid" id="employee-grid">
+        <!-- Cards rendered securely via script.js using document.createElement -->
+      </div>
+    </section>
+
+    <!-- VIEW 2: GE Content Policy & Upload Firewall Sandbox -->
+    <section class="portal-view" id="view-policy">
+      <div class="policy-hero-card">
+        <div class="policy-hero-header">
+          <div>
+            <h3>GE User Flow Content Policy Sandbox</h3>
+            <p>Verify active Content Policy rule: <code>BLOCK_FILE_UPLOADS_TO_GE</code> configured for <code>manufacturing-demo-486618</code>.</p>
+          </div>
+          <span class="policy-badge-tag">POLICY ENFORCED</span>
+        </div>
+        <p class="policy-desc">
+          To prevent unauthorized document ingestion and external data exfiltration in the employee directory query flow, file uploads are intercepted and rejected inline before reaching Gemini Enterprise.
+        </p>
+      </div>
+
+      <div class="sandbox-split">
+        <div class="chat-simulator-panel">
+          <div class="panel-header">
+            <h4>Gemini Enterprise Query Simulator</h4>
+            <span class="panel-sub">Interactive Test Flow</span>
+          </div>
+
+          <div class="chat-messages-container" id="chat-messages">
+            <div class="chat-msg system">
+              <strong>System Ready:</strong> Connected to Gemini Enterprise Employee Database (App ID: <code>employee-database-ge-app</code>). Try asking a question or attempting a file upload below.
+            </div>
+          </div>
+
+          <form class="chat-input-form" id="ge-query-form">
+            <div class="file-upload-bar" id="selected-file-banner" style="display: none;">
+              <span id="attached-filename-label">No file selected</span>
+              <button type="button" id="remove-file-btn" class="remove-file-btn">Remove</button>
+            </div>
+            <div class="input-row">
+              <label for="ge-file-picker" class="file-attach-btn" title="Simulate attaching a document to GE user flow">
+                📎 Attach File
+              </label>
+              <input type="file" id="ge-file-picker" class="hidden-file-input" />
+              <input type="text" id="ge-prompt-input" class="chat-input" placeholder="Ask about employee records or test a prompt..." autocomplete="off" />
+              <button type="submit" class="submit-btn" id="send-ge-query-btn">Send Query</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="firewall-audit-panel">
+          <div class="panel-header">
+            <h4>Content Policy & Firewall Audit Log</h4>
+            <span class="panel-sub">Real-time inspection</span>
+          </div>
+          <div class="audit-log-stream" id="audit-log-stream">
+            <div class="audit-entry info">
+              <span class="audit-timestamp">System</span>
+              <span class="audit-message">Content Policy Engine initialized. Upload blocking active.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: Model Armor High-Confidence Template Inspector -->
+    <section class="portal-view" id="view-armor">
+      <div class="armor-overview-card">
+        <div class="armor-card-top">
+          <div>
+            <h3>Model Armor Security Template Configuration</h3>
+            <p>Active Template: <code>projects/manufacturing-demo-486618/locations/us-central1/templates/ge-employee-db-armor-high</code></p>
+          </div>
+          <button id="refresh-config-btn" class="action-btn">Refresh Config</button>
+        </div>
+        <p class="armor-subtitle">
+          All default Model Armor safety filters are strictly enabled and configured with the <strong>HIGH</strong> confidence threshold (minimum false positives, maximum protection for enterprise employee data).
+        </p>
+      </div>
+
+      <div class="armor-split">
+        <div class="filters-list-panel">
+          <h4>Active Filter Settings (High Confident Defaults)</h4>
+          <div class="filter-items" id="armor-filter-list">
+            <!-- Filter rows rendered by script.js -->
+          </div>
+        </div>
+
+        <div class="json-inspector-panel">
+          <div class="panel-header">
+            <h4>Google Cloud REST API Payload</h4>
+            <span class="panel-sub">modelarmor.googleapis.com/v1</span>
+          </div>
+          <pre class="json-viewer" id="json-config-viewer">Loading configuration...</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <div class="footer-content">
+      <span>Gemini Enterprise Employee Database Solution &bull; Google Cloud Model Armor Integrated</span>
+      <span class="footer-id">Project: <code>manufacturing-demo-486618</code> | App ID: <code>employee-database-ge-app</code></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

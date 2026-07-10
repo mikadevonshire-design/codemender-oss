@@ -1,0 +1,71 @@
+{
+  "project": "manufacturing-demo-486618",
+  "modelArmorTemplate": {
+    "name": "projects/manufacturing-demo-486618/locations/us-central1/templates/ge-employee-db-armor-high",
+    "displayName": "Employee Database Model Armor Security Template (High Confidence)",
+    "description": "Inline AI firewall template with all default safety filters enabled at HIGH confidence threshold for the Gemini Enterprise Employee Database app.",
+    "filterSettings": {
+      "promptInjectionFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      },
+      "piiFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK",
+        "redactPii": true
+      },
+      "maliciousUriFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      },
+      "hateSpeechFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      },
+      "harassmentFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      },
+      "sexuallyExplicitFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      },
+      "dangerousContentFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      }
+    }
+  },
+  "geminiEnterpriseApp": {
+    "displayName": "Manufacturing Demo - Employee Directory & HR Assistant",
+    "solutionType": "SOLUTION_TYPE_CHAT",
+    "industryVertical": "GENERIC",
+    "contentPolicy": {
+      "policyId": "ge-employee-db-content-policy",
+      "enforceInUserFlow": true,
+      "fileUploadPolicy": {
+        "allowFileUploads": false,
+        "actionOnUploadAttempt": "BLOCK_AND_LOG",
+        "userFacingMessage": "Blocked by GE Content Policy: Uploading files or external attachments to the Gemini Enterprise Employee Database flow is disabled to prevent unauthorized ingestion and data leakage.",
+        "allowedMimeTypes": [],
+        "maxFileSizeKb": 0
+      },
+      "dataLossPrevention": {
+        "enforceMasking": true,
+        "maskPiiTypes": [
+          "US_SOCIAL_SECURITY_NUMBER",
+          "CREDIT_CARD_NUMBER",
+          "PASSPORT_NUMBER"
+        ]
+      }
+    }
+  },
+  "status": "READY_FOR_DEPLOYMENT"
+}

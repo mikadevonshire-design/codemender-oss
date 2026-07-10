@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "project": "manufacturing-demo-486618",
+  "location": "us-central1",
+  "geminiEnterpriseApp": {
+    "appId": "employee-database-ge-app",
+    "displayName": "Manufacturing Demo - Employee Directory & HR Assistant",
+    "solutionType": "SOLUTION_TYPE_CHAT",
+    "industryVertical": "GENERIC",
+    "description": "Gemini Enterprise Application serving as the central Employee Database and natural language directory query service for manufacturing-demo-486618.",
+    "contentPolicy": {
+      "policyId": "ge-employee-db-content-policy",
+      "enforceInUserFlow": true,
+      "fileUploadPolicy": {
+        "allowFileUploads": false,
+        "actionOnUploadAttempt": "BLOCK_AND_LOG",
+        "userFacingMessage": "Blocked by GE Content Policy: Uploading files or external attachments to the Gemini Enterprise Employee Database flow is disabled to prevent unauthorized ingestion and data leakage.",
+        "allowedMimeTypes": [],
+        "maxFileSizeKb": 0
+      },
+      "dataLossPrevention": {
+        "enforceMasking": true,
+        "maskPiiTypes": ["US_SOCIAL_SECURITY_NUMBER", "CREDIT_CARD_NUMBER", "PASSPORT_NUMBER"]
+      }
+    }
+  },
+  "modelArmorTemplate": {
+    "templateId": "ge-employee-db-armor-high",
+    "displayName": "Employee Database Model Armor Security Template (High Confidence)",
+    "description": "Inline AI firewall template with all default safety filters enabled at HIGH confidence threshold for the Gemini Enterprise Employee Database app.",
+    "filterSettings": {
+      "promptInjectionFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      },
+      "piiFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK",
+        "redactPii": true
+      },
+      "maliciousUriFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      },
+      "hateSpeechFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      },
+      "harassmentFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      },
+      "sexuallyExplicitFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      },
+      "dangerousContentFilterSettings": {
+        "enabled": true,
+        "confidenceLevel": "HIGH",
+        "enforcementAction": "BLOCK"
+      }
+    }
+  }
+}
