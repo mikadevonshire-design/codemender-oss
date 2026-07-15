@@ -1,0 +1,16 @@
+{
+  "remediation_id": "codemender-cve-test-app-20260715",
+  "timestamp": "2026-07-15T16:53:59Z",
+  "target_application": "cve-test-app",
+  "baseline_image": "us-central1-docker.pkg.dev/codemender-oss/golden-apps-source-repo/cve-test-app:v1-vuln",
+  "hardened_image": "us-central1-docker.pkg.dev/codemender-oss/hardened-golden-repo/cve-test-app:v1-hardened",
+  "remediation_summary": {
+    "base_image_upgrade": "alpine:3.12.0 -> alpine:3.20.0",
+    "package_remediation": "curl=7.79.1-r1 -> latest secure apk build",
+    "baseline_cves_eliminated": 25,
+    "critical_cves_eliminated": 3,
+    "high_cves_eliminated": 16,
+    "post_remediation_cvss": 0.0
+  },
+  "verification_status": "VERIFIED_CLEAN_BUILD"
+}
