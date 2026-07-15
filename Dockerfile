@@ -2,7 +2,7 @@
 FROM alpine:3.12.0
 
 # Install a generic, older utility version for dependency scanning verification
-RUN apk update && apk add --no-cache curl=7.79.1-r0
+RUN apk update && apk add --no-cache curl=7.79.1-r1
 
 # Set up entry point
 WORKDIR /app
