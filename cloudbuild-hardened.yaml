@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-f', 'Dockerfile.hardened', '-t', 'us-central1-docker.pkg.dev/codemender-oss/hardened-golden-repo/cve-test-app:v1-hardened', '.']
+images:
+- 'us-central1-docker.pkg.dev/codemender-oss/hardened-golden-repo/cve-test-app:v1-hardened'
